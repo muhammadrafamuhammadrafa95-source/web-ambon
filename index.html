@@ -1,49 +1,47 @@
-```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Portofolio Rafa - Football</title>
+    <title>Michael Olise | Football Portfolio</title>
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            min-height: 100vh;
+            background: #050505;
             color: white;
-            background:
-                linear-gradient(rgba(0, 30, 15, 0.75), rgba(0, 0, 0, 0.9)),
-                url("https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1920&q=80");
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
         }
 
         /* NAVBAR */
         nav {
+            position: fixed;
+            top: 0;
             width: 100%;
-            padding: 20px 8%;
+            padding: 18px 7%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0, 0, 0, 0.45);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            top: 0;
-            z-index: 10;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #00ff88;
+            font-size: 25px;
+            font-weight: 900;
+            color: #e30613;
         }
 
         nav a {
@@ -51,58 +49,477 @@
             text-decoration: none;
             margin-left: 25px;
             font-weight: bold;
+            transition: .3s;
         }
 
         nav a:hover {
-            color: #00ff88;
+            color: #e30613;
         }
 
         /* HERO */
         .hero {
             min-height: 100vh;
+            position: relative;
+            overflow: hidden;
             display: flex;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 100px 20px 50px;
+            padding: 100px 7% 40px;
+
+            background:
+                radial-gradient(circle at 80% 50%, #e30613 0%, transparent 30%),
+                linear-gradient(120deg, #050505, #150000, #050505);
+        }
+
+        .hero::before {
+            content: "17";
+            position: absolute;
+            right: 5%;
+            bottom: -50px;
+            font-size: 450px;
+            font-weight: 900;
+            color: rgba(255,255,255,0.025);
+            z-index: 0;
         }
 
         .hero-content {
-            max-width: 850px;
+            width: 50%;
+            position: relative;
+            z-index: 2;
         }
 
-        .ball {
-            font-size: 80px;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-18px);
-            }
+        .small-title {
+            color: #e30613;
+            font-weight: bold;
+            letter-spacing: 5px;
+            margin-bottom: 15px;
         }
 
         h1 {
-            font-size: 60px;
-            margin: 15px 0;
+            font-size: clamp(55px, 8vw, 110px);
+            line-height: .85;
+            font-weight: 900;
             text-transform: uppercase;
         }
 
         h1 span {
-            color: #00ff88;
+            color: #e30613;
         }
 
-        .hero p {
+        .position {
+            margin-top: 25px;
             font-size: 20px;
-            color: #ddd;
-            margin-bottom: 30px;
+            color: #ccc;
         }
 
         .button {
             display: inline-block;
-            padding: 14px 30
-```
+            margin-top: 35px;
+            padding: 15px 30px;
+            background: #e30613;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: .3s;
+        }
+
+        .button:hover {
+            transform: translateY(-5px);
+            background: white;
+            color: #e30613;
+        }
+
+        /* PLAYER IMAGE */
+        .player {
+            position: absolute;
+            right: 8%;
+            bottom: 0;
+            height: 88%;
+            max-width: 50%;
+            object-fit: contain;
+            z-index: 1;
+            filter: drop-shadow(0 0 40px rgba(227,6,19,.35));
+        }
+
+        /* SECTION */
+        section {
+            padding: 100px 8%;
+            background: #080808;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 45px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        .title span {
+            color: #e30613;
+        }
+
+        /* PROFILE */
+        .profile {
+            max-width: 1000px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            padding: 35px;
+            background: linear-gradient(145deg, #151515, #080808);
+            border: 1px solid #292929;
+            border-radius: 15px;
+            transition: .3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #e30613;
+        }
+
+        .card h2 {
+            color: #e30613;
+            margin-bottom: 20px;
+        }
+
+        .card p {
+            color: #bbb;
+            line-height: 1.8;
+        }
+
+        /* STATS */
+        .stats {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 35px 15px;
+            background: #111;
+            border-radius: 15px;
+            border-bottom: 4px solid #e30613;
+        }
+
+        .stat h3 {
+            font-size: 42px;
+            color: #e30613;
+        }
+
+        .stat p {
+            color: #aaa;
+            margin-top: 10px;
+        }
+
+        /* SKILLS */
+        .skills {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .skill {
+            margin-bottom: 30px;
+        }
+
+        .skill-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .bar {
+            width: 100%;
+            height: 10px;
+            background: #222;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .fill {
+            height: 100%;
+            background: #e30613;
+            border-radius: 20px;
+        }
+
+        /* QUOTE */
+        .quote {
+            text-align: center;
+            padding: 100px 20px;
+            background:
+                linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.9)),
+                url("https://img.fcbayern.com/image/upload/f_auto/q_auto/t_cms-16x9-seo/v1723375678/cms/public/images/fcbayern-com/homepage/Saison-24-25/Galerien/Olise/05-michael-olise-070724.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .quote h2 {
+            font-size: 45px;
+            text-transform: uppercase;
+        }
+
+        .quote span {
+            color: #e30613;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #020202;
+            color: #777;
+        }
+
+        footer b {
+            color: #e30613;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav a {
+                margin-left: 10px;
+                font-size: 12px;
+            }
+
+            .hero {
+                text-align: center;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .hero-content {
+                width: 100%;
+            }
+
+            .player {
+                position: relative;
+                right: auto;
+                height: 450px;
+                max-width: 100%;
+                margin-top: 20px;
+            }
+
+            .profile {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quote h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">OLISE 17</div>
+
+        <div>
+            <a href="#home">HOME</a>
+            <a href="#profile">PROFILE</a>
+            <a href="#stats">STATS</a>
+            <a href="#skills">SKILLS</a>
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="small-title">
+                FC BAYERN MÜNCHEN
+            </div>
+
+            <h1>
+                Michael<br>
+                <span>Olise</span>
+            </h1>
+
+            <p class="position">
+                ⚡ RIGHT WINGER &nbsp; | &nbsp; 🇫🇷 FRANCE &nbsp; | &nbsp; #17
+            </p>
+
+            <a href="#profile" class="button">
+                EXPLORE PLAYER
+            </a>
+
+        </div>
+
+        <!-- FOTO MICHAEL OLISE -->
+        <img
+            class="player"
+            src="https://img.fcbayern.com/image/upload/f_auto/q_auto/ar_1%3A1%2Cc_fill%2Cg_custom%2Cw_768/v1785247524/cms/public/images/fcbayern-com/players/spielerportraits/ganzkoerper/michael-olise.png"
+            alt="Michael Olise FC Bayern">
+    </section>
+
+
+    <!-- PROFILE -->
+    <section id="profile">
+
+        <h2 class="title">
+            PLAYER <span>PROFILE</span>
+        </h2>
+
+        <div class="profile">
+
+            <div class="card">
+                <h2>⚽ About Olise</h2>
+
+                <p>
+                    Michael Olise adalah pemain sepak bola Prancis
+                    yang bermain untuk FC Bayern München. Ia dikenal
+                    sebagai pemain sayap kanan dengan kaki kiri yang
+                    kuat, kemampuan dribbling dan kreativitas dalam
+                    memberikan assist.
+                </p>
+            </div>
+
+            <div class="card">
+                <h2>🔥 Player Info</h2>
+
+                <p>
+                    Nama: Michael Olise<br>
+                    Nomor: 17<br>
+                    Posisi: Forward / Right Wing<br>
+                    Kaki dominan: Kiri<br>
+                    Klub: FC Bayern München<br>
+                    Negara: Prancis
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATS -->
+    <section id="stats">
+
+        <h2 class="title">
+            PLAYER <span>INFO</span>
+        </h2>
+
+        <div class="stats">
+
+            <div class="stat">
+                <h3>17</h3>
+                <p>Jersey Number</p>
+            </div>
+
+            <div class="stat">
+                <h3>1.80</h3>
+                <p>Height / Meter</p>
+            </div>
+
+            <div class="stat">
+                <h3>LW</h3>
+                <p>Attacking Role</p>
+            </div>
+
+            <div class="stat">
+                <h3>LEFT</h3>
+                <p>Strong Foot</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+    <section id="skills">
+
+        <h2 class="title">
+            OLISE <span>SKILLS</span>
+        </h2>
+
+        <div class="skills">
+
+            <div class="skill">
+                <div class="skill-top">
+                    <b>Dribbling</b>
+                    <span>95%</span>
+                </div>
+
+                <div class="bar">
+                    <div class="fill" style="width:95%"></div>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-top">
+                    <b>Passing</b>
+                    <span>94%</span>
+                </div>
+
+                <div class="bar">
+                    <div class="fill" style="width:94%"></div>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-top">
+                    <b>Crossing</b>
+                    <span>96%</span>
+                </div>
+
+                <div class="bar">
+                    <div class="fill" style="width:96%"></div>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-top">
+                    <b>Finishing</b>
+                    <span>90%</span>
+                </div>
+
+                <div class="bar">
+                    <div class="fill" style="width:90%"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- QUOTE -->
+    <div class="quote">
+
+        <h2>
+            "THE <span>LEFT FOOT</span> MAGIC"
+        </h2>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer>
+        Michael Olise Football Portfolio •
+        <b>FC Bayern #17</b>
+    </footer>
+
+</body>
+</html>
