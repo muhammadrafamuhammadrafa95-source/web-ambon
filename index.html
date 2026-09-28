@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rafa Shooter Game</title>
+    <title>Rafa Basketball Game</title>
 
     <style>
         * {
@@ -15,10 +15,10 @@
 
         body {
             font-family: Arial, sans-serif;
-            background:
-                radial-gradient(circle at center, #5b168f, #1a032b 65%, #08000f);
-            color: white;
             min-height: 100vh;
+            color: white;
+            background:
+                radial-gradient(circle at 50% 30%, #7b20b8, #26003d 55%, #08000d);
             overflow: hidden;
         }
 
@@ -26,20 +26,21 @@
             text-align: center;
             padding: 15px;
             background: rgba(0,0,0,.3);
-            border-bottom: 2px solid #b85cff;
+            border-bottom: 2px solid #c65cff;
         }
 
         header h1 {
-            color: #e0a3ff;
-            text-shadow: 0 0 15px #a020f0;
+            font-size: 30px;
+            color: #f0c4ff;
+            text-shadow: 0 0 15px #b000ff;
         }
 
         header p {
             margin-top: 5px;
-            color: #d9b5ed;
+            color: #dcb8ed;
         }
 
-        .info {
+        .stats {
             display: flex;
             justify-content: center;
             gap: 15px;
@@ -48,122 +49,155 @@
         }
 
         .stat {
-            background: rgba(255,255,255,.1);
-            border: 1px solid #a947e8;
-            border-radius: 12px;
-            padding: 10px 25px;
+            min-width: 120px;
+            padding: 10px 20px;
             text-align: center;
-            box-shadow: 0 0 12px rgba(170,0,255,.3);
+            border-radius: 14px;
+            background: rgba(255,255,255,.1);
+            border: 1px solid #bd55ed;
+            box-shadow: 0 0 15px rgba(180,0,255,.25);
         }
 
-        .stat b {
+        .stat span {
             display: block;
-            color: #e19aff;
-            font-size: 24px;
+            margin-top: 4px;
+            font-size: 25px;
+            font-weight: bold;
+            color: #e6a8ff;
         }
 
-        #game {
+        #court {
             position: relative;
-            width: 90%;
+            width: 92%;
             max-width: 1000px;
-            height: 570px;
+            height: 560px;
             margin: auto;
             overflow: hidden;
 
-            border: 3px solid #c05cff;
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(255,255,255,.04),
+                    rgba(80,0,120,.3)
+                );
+
+            border: 3px solid #d06cff;
             border-radius: 20px;
 
-            background:
-                linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
-
-            background-size: 35px 35px;
-
             box-shadow:
-                0 0 30px #7d00b8,
-                inset 0 0 80px rgba(0,0,0,.6);
-
-            cursor: crosshair;
+                0 0 35px #8700bd,
+                inset 0 0 80px rgba(0,0,0,.5);
         }
 
-        /* TARGET */
-        .target {
+        /* LANTAI */
+        .floor {
             position: absolute;
-            width: 65px;
+            bottom: 0;
+            width: 100%;
+            height: 110px;
+            background: linear-gradient(
+                #6c1c91,
+                #35104a
+            );
+            border-top: 3px solid #d17cff;
+        }
+
+        /* RING */
+        .hoop {
+            position: absolute;
+            top: 75px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 170px;
+            height: 15px;
+            background: #ff6b1a;
+            border-radius: 20px;
+            box-shadow: 0 0 15px #ff6b1a;
+        }
+
+        .backboard {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 75px;
+            border: 5px solid white;
+            border-radius: 8px;
+            background: rgba(255,255,255,.08);
+        }
+
+        .net {
+            position: absolute;
+            top: 87px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 95px;
             height: 65px;
+            border-left: 3px dashed white;
+            border-right: 3px dashed white;
+            border-bottom: 3px dashed white;
+            border-radius: 0 0 50px 50px;
+            opacity: .7;
+        }
+
+        /* BOLA */
+        #ball {
+            position: absolute;
+            width: 55px;
+            height: 55px;
+            left: 50%;
+            bottom: 45px;
+            transform: translateX(-50%);
+
             border-radius: 50%;
 
             background:
                 radial-gradient(
-                    circle,
-                    white 0 12%,
-                    #ff4dff 13% 35%,
-                    #8d00ff 36% 65%,
-                    #300050 66%
+                    circle at 30% 25%,
+                    #ffb13b,
+                    #e66b00 60%,
+                    #9e3600
                 );
 
             box-shadow:
-                0 0 10px white,
-                0 0 30px #d000ff;
+                0 0 10px #ff9d32,
+                0 0 25px rgba(255,100,0,.5);
 
-            cursor: crosshair;
-
-            animation: pulse .7s infinite alternate;
+            cursor: grab;
+            z-index: 5;
         }
 
-        @keyframes pulse {
-            from {
-                transform: scale(1);
-            }
-            to {
-                transform: scale(1.08);
-            }
-        }
-
-        /* PELURU */
-        .bullet {
+        /* GARIS LAPANGAN */
+        .line {
             position: absolute;
-            width: 8px;
-            height: 25px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 15px #d87aff;
-            pointer-events: none;
+            left: 50%;
+            bottom: 15px;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 70px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-bottom: none;
+            border-radius: 160px 160px 0 0;
         }
 
-        /* LEDAKAN */
-        .boom {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            border: 5px solid #f0a0ff;
-            border-radius: 50%;
-            pointer-events: none;
-            animation: boom .35s forwards;
-        }
-
-        @keyframes boom {
-            from {
-                transform: scale(.2);
-                opacity: 1;
-            }
-            to {
-                transform: scale(2);
-                opacity: 0;
-            }
-        }
-
+        /* TOMBOL */
         button {
             display: block;
             margin: 15px auto;
+
             padding: 13px 35px;
 
             border: none;
             border-radius: 30px;
 
-            background: linear-gradient(90deg, #7500d9, #c04cff);
-            color: white;
+            background: linear-gradient(
+                90deg,
+                #7500d9,
+                #d34cff
+            );
 
+            color: white;
             font-size: 17px;
             font-weight: bold;
 
@@ -173,21 +207,53 @@
         }
 
         button:hover {
-            transform: scale(1.06);
+            transform: scale(1.07);
             box-shadow: 0 0 35px #d000ff;
         }
 
         #message {
             text-align: center;
+            min-height: 25px;
+            color: #e7caff;
             font-weight: bold;
-            color: #e6c5ff;
         }
 
-        .crosshair {
-            position: fixed;
-            pointer-events: none;
-            font-size: 30px;
-            display: none;
+        /* ANIMASI BOLA */
+        @keyframes scorePop {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.4);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .score-pop {
+            animation: scorePop .3s;
+        }
+
+        @media(max-width: 600px) {
+
+            #court {
+                height: 470px;
+            }
+
+            .backboard {
+                width: 140px;
+            }
+
+            .hoop {
+                width: 130px;
+            }
+
+            .net {
+                width: 75px;
+            }
         }
     </style>
 </head>
@@ -195,82 +261,97 @@
 <body>
 
 <header>
-    <h1>🎯 RAFA SHOOTER</h1>
-    <p>Game Tembak Target • Mochamad Rafa W</p>
+    <h1>🏀 RAFA BASKETBALL</h1>
+    <p>Basket Game • Mochamad Rafa W</p>
 </header>
 
-<div class="info">
+
+<div class="stats">
 
     <div class="stat">
         SCORE
-        <b id="score">0</b>
+        <span id="score">0</span>
     </div>
 
     <div class="stat">
-        LEVEL
-        <b id="level">1</b>
-    </div>
-
-    <div class="stat">
-        TARGET
-        <b id="targetCount">10</b>
+        COMBO
+        <span id="combo">0</span>
     </div>
 
     <div class="stat">
         WAKTU
-        <b id="time">30</b>
+        <span id="time">30</span>
     </div>
 
 </div>
 
-<div id="game"></div>
 
-<button onclick="startGame()">🔫 MULAI GAME</button>
+<div id="court">
+
+    <div class="backboard"></div>
+
+    <div class="hoop"></div>
+
+    <div class="net"></div>
+
+    <div class="line"></div>
+
+    <div class="floor"></div>
+
+    <div id="ball"></div>
+
+</div>
+
+
+<button onclick="startGame()">
+    🏀 MULAI GAME
+</button>
+
 
 <div id="message">
-    Klik MULAI GAME untuk bermain!
+    Klik MULAI GAME lalu lempar bola ke ring!
 </div>
+
 
 <script>
 
-const game = document.getElementById("game");
+const court = document.getElementById("court");
+const ball = document.getElementById("ball");
 
 const scoreText = document.getElementById("score");
-const levelText = document.getElementById("level");
-const targetText = document.getElementById("targetCount");
+const comboText = document.getElementById("combo");
 const timeText = document.getElementById("time");
 const message = document.getElementById("message");
 
 let score = 0;
-let level = 1;
-let targetCount = 10;
+let combo = 0;
 let time = 30;
 
 let playing = false;
 let timer;
-let targetTimer;
+
+let dragging = false;
+let startX = 0;
+let startY = 0;
 
 
 /* MULAI GAME */
 function startGame() {
 
     score = 0;
-    level = 1;
-    targetCount = 10;
+    combo = 0;
     time = 30;
+
+    scoreText.textContent = score;
+    comboText.textContent = combo;
+    timeText.textContent = time;
 
     playing = true;
 
-    scoreText.textContent = score;
-    levelText.textContent = level;
-    targetText.textContent = targetCount;
-    timeText.textContent = time;
+    message.textContent =
+        "🏀 Tarik bola ke bawah lalu lepaskan ke arah ring!";
 
-    message.textContent = "🎯 Hancurkan semua target!";
-
-    game.innerHTML = "";
-
-    createTarget();
+    resetBall();
 
     clearInterval(timer);
 
@@ -281,157 +362,174 @@ function startGame() {
         timeText.textContent = time;
 
         if (time <= 0) {
-            gameOver();
+
+            playing = false;
+
+            clearInterval(timer);
+
+            message.textContent =
+                "🏆 GAME SELESAI! Score: " + score;
+
         }
 
     }, 1000);
 }
 
 
-/* BUAT TARGET */
-function createTarget() {
+/* POSISI AWAL BOLA */
+function resetBall() {
 
-    if (!playing) return;
+    ball.style.transition = "none";
 
-    const target = document.createElement("div");
+    ball.style.left =
+        "50%";
 
-    target.className = "target";
+    ball.style.bottom =
+        "45px";
 
-    const maxX = game.clientWidth - 65;
-    const maxY = game.clientHeight - 65;
-
-    target.style.left =
-        Math.random() * maxX + "px";
-
-    target.style.top =
-        Math.random() * maxY + "px";
-
-    target.addEventListener("click", function(e) {
-
-        e.stopPropagation();
-
-        shootEffect(
-            target.offsetLeft + 30,
-            target.offsetTop + 30
-        );
-
-        target.remove();
-
-        score++;
-
-        targetCount--;
-
-        scoreText.textContent = score;
-        targetText.textContent = targetCount;
-
-        /* Naik level setiap 10 poin */
-        if (score % 10 === 0) {
-
-            level++;
-
-            levelText.textContent = level;
-
-            message.textContent =
-                "🔥 LEVEL " + level + "!";
-        }
-
-        if (targetCount <= 0) {
-
-            targetCount = 10 + level * 2;
-
-            targetText.textContent = targetCount;
-        }
-
-        createTarget();
-
-    });
-
-    game.appendChild(target);
+    ball.style.transform =
+        "translateX(-50%) scale(1)";
 }
 
 
-/* EFEK TEMBAKAN */
-function shootEffect(x, y) {
-
-    const boom = document.createElement("div");
-
-    boom.className = "boom";
-
-    boom.style.left = (x - 25) + "px";
-    boom.style.top = (y - 25) + "px";
-
-    game.appendChild(boom);
-
-    setTimeout(() => {
-        boom.remove();
-    }, 350);
-}
-
-
-/* KLIK AREA = TEMBAK */
-game.addEventListener("click", function(e) {
+/* MULAI DRAG */
+ball.addEventListener("pointerdown", function(e) {
 
     if (!playing) return;
 
-    const rect = game.getBoundingClientRect();
+    dragging = true;
 
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    startX = e.clientX;
+    startY = e.clientY;
 
-    /* Efek peluru */
-    const bullet = document.createElement("div");
-
-    bullet.className = "bullet";
-
-    bullet.style.left = x + "px";
-    bullet.style.top = y + "px";
-
-    game.appendChild(bullet);
-
-    setTimeout(() => {
-        bullet.remove();
-    }, 150);
+    ball.setPointerCapture(e.pointerId);
 
 });
 
 
-/* GAME OVER */
-function gameOver() {
+/* GERAKKAN BOLA */
+ball.addEventListener("pointermove", function(e) {
 
-    playing = false;
+    if (!dragging) return;
 
-    clearInterval(timer);
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
 
-    game.innerHTML = "";
+    const distance =
+        Math.min(Math.max(-dy, 0), 300);
 
-    message.innerHTML =
-        "🏆 GAME SELESAI! Score kamu: <b>" +
-        score +
-        "</b> — Klik MULAI GAME untuk main lagi.";
+    ball.style.transform =
+        `translateX(-50%) translateY(${-distance}px) scale(.9)`;
 
+});
+
+
+/* LEMPAR BOLA */
+ball.addEventListener("pointerup", function(e) {
+
+    if (!dragging) return;
+
+    dragging = false;
+
+    const power =
+        Math.min(
+            Math.max(startY - e.clientY, 80),
+            400
+        );
+
+    shootBall(power);
+
+});
+
+
+/* TEMBAK / LEMPAR */
+function shootBall(power) {
+
+    ball.style.transition =
+        "all .7s cubic-bezier(.2,.8,.3,1)";
+
+    const targetX =
+        (court.clientWidth / 2) - 27;
+
+    const targetY = 55;
+
+    ball.style.left =
+        targetX + "px";
+
+    ball.style.bottom =
+        (court.clientHeight - targetY) + "px";
+
+    ball.style.transform =
+        "translateX(0) scale(.75)";
+
+    setTimeout(() => {
+
+        checkScore(power);
+
+    }, 700);
 }
 
 
-/* TARGET BERGERAK */
-setInterval(() => {
+/* CEK MASUK RING */
+function checkScore(power) {
 
-    if (!playing) return;
+    /*
+        Semakin besar power,
+        semakin besar kemungkinan masuk.
+    */
 
-    const target =
-        document.querySelector(".target");
+    const chance =
+        Math.random();
 
-    if (!target) return;
+    const success =
+        power >= 120 && chance < .75;
 
-    const maxX = game.clientWidth - 65;
-    const maxY = game.clientHeight - 65;
+    if (success) {
 
-    target.style.left =
-        Math.random() * maxX + "px";
+        score += 2;
+        combo++;
 
-    target.style.top =
-        Math.random() * maxY + "px";
+        scoreText.textContent = score;
+        comboText.textContent = combo;
 
-}, 900);
+        scoreText.classList.remove("score-pop");
+
+        void scoreText.offsetWidth;
+
+        scoreText.classList.add("score-pop");
+
+        message.textContent =
+            combo >= 3
+            ? "🔥 HOT STREAK! +2 POINT!"
+            : "🏀 MASUK! +2 POINT!";
+
+    } else {
+
+        combo = 0;
+
+        comboText.textContent = combo;
+
+        message.textContent =
+            "❌ Meleset! Coba atur kekuatan lemparan.";
+
+    }
+
+    setTimeout(() => {
+
+        resetBall();
+
+    }, 500);
+}
+
+
+/* KALAU POINTER DILEPAS DI LUAR */
+ball.addEventListener("pointercancel", function() {
+
+    dragging = false;
+
+    resetBall();
+
+});
 
 </script>
 
