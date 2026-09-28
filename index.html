@@ -3,259 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Mochamad Rafa W | Michael Olise</title>
+    <title>Mochamad Rafa W</title>
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
         }
 
         body {
             min-height: 100vh;
             background:
-                radial-gradient(circle at 80% 20%, #8a2be2 0%, transparent 30%),
-                radial-gradient(circle at 10% 80%, #4b0082 0%, transparent 35%),
-                #07000f;
+                radial-gradient(circle at 50% 45%, #30004f 0%, #10001d 45%, #050008 100%);
             color: white;
-            overflow-x: hidden;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow: hidden;
         }
 
-        /* NAVBAR */
-        nav {
-            height: 80px;
+        .container {
+            min-height: 100vh;
+            padding: 25px 5%;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 8%;
-            background: rgba(10, 0, 20, 0.7);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(190, 100, 255, 0.25);
-        }
-
-        .logo {
-            font-size: 25px;
-            font-weight: 900;
-            color: #d98cff;
-            text-shadow: 0 0 15px #a020f0;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 30px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: #d98cff;
-            text-shadow: 0 0 10px #a020f0;
-        }
-
-        /* HERO */
-        .hero {
-            min-height: calc(100vh - 80px);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 60px 9%;
-            gap: 50px;
-        }
-
-        .text {
-            max-width: 600px;
-            z-index: 2;
-        }
-
-        .tag {
-            color: #c77dff;
-            letter-spacing: 6px;
-            font-size: 15px;
-            font-weight: bold;
-            margin-bottom: 18px;
-        }
-
-        h1 {
-            font-size: clamp(55px, 8vw, 100px);
-            line-height: 0.9;
-            text-transform: uppercase;
-            font-weight: 1000;
-            text-shadow: 0 0 30px rgba(174, 0, 255, 0.5);
-        }
-
-        h1 span {
-            color: #c77dff;
-        }
-
-        /* NAMA */
-        .rafa {
-            margin-top: 28px;
-            font-size: 28px;
-            letter-spacing: 5px;
-            font-weight: bold;
-            color: #e0b3ff;
-            text-shadow:
-                0 0 10px #9b00ff,
-                0 0 25px #9b00ff;
-        }
-
-        .desc {
-            margin-top: 22px;
-            color: #cfc3d8;
-            line-height: 1.7;
-            max-width: 520px;
-        }
-
-        /* BUTTON */
-        .btn {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 35px;
-            border-radius: 40px;
-            background: linear-gradient(90deg, #7200ff, #c000ff);
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 0 30px rgba(174, 0, 255, 0.7);
-            transition: 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-5px) scale(1.04);
-            box-shadow: 0 0 50px #a020f0;
-        }
-
-        /* FOTO OLISE */
-        .photo-box {
-            width: 430px;
-            height: 560px;
-            position: relative;
-            display: flex;
-            align-items: flex-end;
+            flex-direction: column;
             justify-content: center;
         }
 
-        .photo-box::before {
-            content: "";
+        /* Tulisan atas */
+        .top {
             position: absolute;
-            width: 380px;
-            height: 380px;
-            background: #8a2be2;
-            filter: blur(100px);
-            opacity: 0.55;
-            border-radius: 50%;
-        }
-
-        .photo {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-
-            filter:
-                drop-shadow(0 0 15px #a020f0)
-                drop-shadow(0 0 35px rgba(160, 32, 240, 0.7));
-
-            transition: 0.5s;
-        }
-
-        .photo:hover {
-            transform: scale(1.05) translateY(-8px);
-
-            filter:
-                drop-shadow(0 0 25px #d000ff)
-                drop-shadow(0 0 55px #8a2be2);
-        }
-
-        /* NOMOR BESAR */
-        .back-text {
-            position: absolute;
-            right: -40px;
-            bottom: 20px;
-            font-size: 150px;
-            font-weight: 1000;
-            color: rgba(255, 255, 255, 0.035);
-            z-index: 1;
-            transform: rotate(-8deg);
-        }
-
-        /* STATISTIK */
-        .info {
-            padding: 50px 8%;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            width: 200px;
-            padding: 25px;
-            text-align: center;
-
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid rgba(200, 100, 255, 0.25);
-            border-radius: 18px;
-
-            backdrop-filter: blur(15px);
-            box-shadow: 0 0 20px rgba(120, 0, 255, 0.15);
-
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 0 30px rgba(170, 0, 255, 0.5);
-        }
-
-        .card h2 {
-            color: #d18aff;
-            font-size: 32px;
+            top: 10px;
+            left: 5%;
+            color: #c678ff;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 10px;
             text-shadow: 0 0 15px #9b00ff;
         }
 
-        .card p {
-            margin-top: 8px;
-            color: #aaa;
+        /* Nama */
+        .name {
+            text-transform: uppercase;
+            font-weight: 1000;
+            line-height: 0.85;
+            letter-spacing: -5px;
         }
 
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #888;
+        .first {
+            font-size: clamp(60px, 12vw, 170px);
+            color: white;
+            text-shadow:
+                0 0 10px rgba(255,255,255,.4),
+                0 0 35px rgba(160,0,255,.3);
         }
 
-        /* RESPONSIVE HP */
-        @media (max-width: 850px) {
+        .second {
+            font-size: clamp(80px, 15vw, 210px);
+            color: #bd6cff;
+            text-shadow:
+                0 0 15px #8c00ff,
+                0 0 45px rgba(155,0,255,.7);
+        }
 
-            .hero {
-                flex-direction: column;
-                text-align: center;
+        /* Garis dekorasi */
+        .line {
+            width: 180px;
+            height: 5px;
+            margin-top: 35px;
+            background: linear-gradient(
+                90deg,
+                #7b00ff,
+                #d080ff,
+                transparent
+            );
+            box-shadow: 0 0 20px #a000ff;
+        }
+
+        .subtitle {
+            margin-top: 18px;
+            font-size: 18px;
+            letter-spacing: 5px;
+            color: #bda5c9;
+        }
+
+        /* Efek lingkaran */
+        .glow {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: #7b00ff;
+            filter: blur(180px);
+            opacity: .18;
+            right: -180px;
+            bottom: -200px;
+            pointer-events: none;
+        }
+
+        .glow2 {
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: #b000ff;
+            filter: blur(150px);
+            opacity: .15;
+            left: -150px;
+            top: -100px;
+            pointer-events: none;
+        }
+
+        /* Animasi */
+        .name {
+            animation: muncul 1.2s ease-out;
+        }
+
+        @keyframes muncul {
+            from {
+                opacity: 0;
+                transform: translateX(-60px);
+                filter: blur(10px);
             }
 
-            .photo-box {
-                width: 330px;
-                height: 450px;
+            to {
+                opacity: 1;
+                transform: translateX(0);
+                filter: blur(0);
+            }
+        }
+
+        @media(max-width: 700px) {
+
+            .top {
+                font-size: 13px;
+                letter-spacing: 5px;
             }
 
-            nav a {
-                display: none;
+            .name {
+                letter-spacing: -3px;
             }
 
-            .desc {
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .rafa {
-                font-size: 22px;
-                letter-spacing: 3px;
+            .subtitle {
+                font-size: 13px;
             }
         }
     </style>
@@ -263,98 +152,34 @@
 
 <body>
 
-    <!-- NAVBAR -->
-    <nav>
-        <div class="logo">MRW ⚡</div>
+    <div class="glow"></div>
+    <div class="glow2"></div>
 
-        <div>
-            <a href="#">HOME</a>
-            <a href="#profile">PROFILE</a>
-            <a href="#stats">STATS</a>
+    <div class="container">
+
+        <div class="top">
+            FOOTBALL • RAFA • FAN PAGE
         </div>
-    </nav>
 
+        <div class="name">
 
-    <!-- HERO -->
-    <section class="hero" id="profile">
-
-        <div class="text">
-
-            <div class="tag">
-                FOOTBALL • OLISE • FAN PAGE
+            <div class="first">
+                MOCHAMAD
             </div>
 
-            <h1>
-                MICHAEL<br>
-                <span>OLISE</span>
-            </h1>
-
-            <!-- NAMA KAMU -->
-            <div class="rafa">
-                MOCHAMAD RAFA W
+            <div class="second">
+                RAFA W
             </div>
 
-            <p class="desc">
-                Welcome to the purple zone.
-                Website personal bertema Michael Olise
-                dengan nuansa ungu, neon dan football vibes.
-            </p>
-
-            <a href="#stats" class="btn">
-                EXPLORE ⚡
-            </a>
-
         </div>
 
+        <div class="line"></div>
 
-        <!-- FOTO -->
-        <div class="photo-box">
-
-            <div class="back-text">
-                17
-            </div>
-
-            <img
-                class="photo"
-                src="https://img.fcbayern.com/image/upload/f_auto/q_auto/t_cms-16x9-seo/v1723375678/cms/public/images/fcbayern-com/homepage/Saison-24-25/Galerien/Olise/05-michael-olise-070724.jpg"
-                alt="Michael Olise"
-            >
-
+        <div class="subtitle">
+            MICHAEL OLISE • FOOTBALL • PURPLE VIBES
         </div>
 
-    </section>
-
-
-    <!-- STATISTIK -->
-    <section class="info" id="stats">
-
-        <div class="card">
-            <h2>17</h2>
-            <p>Jersey Number</p>
-        </div>
-
-        <div class="card">
-            <h2>RW</h2>
-            <p>Position</p>
-        </div>
-
-        <div class="card">
-            <h2>⚡</h2>
-            <p>Speed</p>
-        </div>
-
-        <div class="card">
-            <h2>LEFT</h2>
-            <p>Strong Foot</p>
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-    <footer>
-        © 2026 MOCHAMAD RAFA W • MICHAEL OLISE FAN PAGE
-    </footer>
+    </div>
 
 </body>
 </html>
