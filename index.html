@@ -3,574 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Mochamad Rafa W - Purple Game</title>
+    <title>Mochamad Rafa W</title>
 
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            user-select: none;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: Arial, sans-serif;
             min-height: 100vh;
-            background:
-                radial-gradient(circle at 50% 20%, #7b21b5, #2a0642 55%, #08000e);
-            color: white;
-            overflow: hidden;
-        }
-
-        header {
-            text-align: center;
-            padding: 18px;
-            background: rgba(0,0,0,.3);
-            border-bottom: 2px solid #c65cff;
-        }
-
-        header h1 {
-            color: #edc5ff;
-            text-shadow: 0 0 15px #b000ff;
-        }
-
-        header p {
-            margin-top: 5px;
-            color: #d7b9e8;
-        }
-
-        .info {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin: 15px;
-            flex-wrap: wrap;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #24004d, #6a0dad, #a855f7);
+            color: white;
         }
 
-        .box {
-            min-width: 120px;
-            padding: 10px 20px;
-            text-align: center;
-            border-radius: 12px;
-            background: rgba(255,255,255,.09);
-            border: 1px solid #b957ed;
-        }
-
-        .box span {
-            display: block;
-            margin-top: 5px;
-            color: #e2a0ff;
-            font-size: 25px;
-            font-weight: bold;
-        }
-
-        #game {
-            position: relative;
+        .card {
             width: 90%;
-            max-width: 700px;
-            height: 550px;
-            margin: auto;
-            overflow: hidden;
-
-            border: 3px solid #cf65ff;
-            border-radius: 20px;
-
-            background:
-                linear-gradient(
-                    rgba(255,255,255,.04) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(255,255,255,.04) 1px,
-                    transparent 1px
-                );
-
-            background-size: 35px 35px;
-
-            box-shadow:
-                0 0 35px #8500bd,
-                inset 0 0 70px rgba(0,0,0,.5);
-        }
-
-        /* PEMAIN */
-        #player {
-            position: absolute;
-            bottom: 25px;
-            left: 50%;
-
-            width: 50px;
-            height: 50px;
-
-            transform: translateX(-50%);
-
-            background: linear-gradient(
-                135deg,
-                #ffffff,
-                #c45cff
-            );
-
-            border-radius: 12px;
-
-            box-shadow:
-                0 0 15px white,
-                0 0 30px #a000ff;
-
-            z-index: 5;
-        }
-
-        #player::after {
-            content: "🚀";
-            position: absolute;
-            font-size: 30px;
-            left: 9px;
-            top: 8px;
-        }
-
-        /* METEOR */
-        .meteor {
-            position: absolute;
-
-            width: 45px;
-            height: 45px;
-
-            border-radius: 50%;
-
-            background:
-                radial-gradient(
-                    circle at 30% 25%,
-                    #ffccff,
-                    #c000ff 45%,
-                    #43006b
-                );
-
-            box-shadow:
-                0 0 15px #d000ff,
-                0 0 30px #8a00ff;
-        }
-
-        /* BINTANG */
-        .star {
-            position: absolute;
-            color: #ffffff;
-            font-size: 15px;
-            opacity: .7;
-        }
-
-        button {
-            display: block;
-            margin: 15px auto;
-
-            padding: 13px 35px;
-
-            border: none;
-            border-radius: 30px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #7200d9,
-                    #d44cff
-                );
-
-            color: white;
-            font-size: 17px;
-            font-weight: bold;
-
-            cursor: pointer;
-
-            box-shadow: 0 0 20px #9d00ff;
-        }
-
-        button:hover {
-            transform: scale(1.07);
-            box-shadow: 0 0 35px #d000ff;
-        }
-
-        #message {
+            max-width: 650px;
+            padding: 50px 30px;
             text-align: center;
-            min-height: 25px;
-            color: #e5c7f5;
-            font-weight: bold;
+            background: rgba(20, 0, 40, 0.75);
+            border: 2px solid #c084fc;
+            border-radius: 25px;
+            box-shadow: 0 0 30px #a855f7;
         }
 
-        .mobile-controls {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 10px;
+        h1 {
+            font-size: 42px;
+            margin-bottom: 25px;
+            text-shadow: 0 0 15px #d8b4fe;
         }
 
-        .control {
-            width: 80px;
-            height: 50px;
-            padding: 0;
-            margin: 0;
-
-            font-size: 25px;
+        .quote {
+            font-size: 22px;
+            font-style: italic;
+            line-height: 1.6;
+            color: #e9d5ff;
         }
 
-        @media(max-width: 600px) {
+        .line {
+            width: 100px;
+            height: 4px;
+            background: #c084fc;
+            margin: 25px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #c084fc;
+        }
 
-            #game {
-                height: 470px;
-            }
-
-            .box {
-                min-width: 100px;
-                padding: 8px 15px;
-            }
+        footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #d8b4fe;
         }
     </style>
 </head>
 
 <body>
 
-<header>
-    <h1>🎮 PURPLE DODGE</h1>
-    <p>Game by <b>Mochamad Rafa W</b></p>
-</header>
+    <div class="card">
+        <h1>Mochamad Rafa W</h1>
 
+        <div class="line"></div>
 
-<div class="info">
+        <p class="quote">
+            "Jadilah orang baik,<br>
+            dan tinggalkan kebaikan setelahmu."
+        </p>
 
-    <div class="box">
-        SCORE
-        <span id="score">0</span>
+        <footer>
+            ✦ Keep being a good person ✦
+        </footer>
     </div>
-
-    <div class="box">
-        LEVEL
-        <span id="level">1</span>
-    </div>
-
-    <div class="box">
-        WAKTU
-        <span id="time">30</span>
-    </div>
-
-</div>
-
-
-<div id="game">
-
-    <div id="player"></div>
-
-</div>
-
-
-<button onclick="startGame()">
-    🚀 MULAI GAME
-</button>
-
-
-<div class="mobile-controls">
-
-    <button class="control" id="left">
-        ◀
-    </button>
-
-    <button class="control" id="right">
-        ▶
-    </button>
-
-</div>
-
-
-<div id="message">
-    Hindari meteor dan bertahan selama mungkin!
-</div>
-
-
-<script>
-
-const game = document.getElementById("game");
-const player = document.getElementById("player");
-
-const scoreText = document.getElementById("score");
-const levelText = document.getElementById("level");
-const timeText = document.getElementById("time");
-const message = document.getElementById("message");
-
-let score = 0;
-let level = 1;
-let time = 30;
-
-let playerX = 0;
-
-let playing = false;
-
-let gameTimer;
-let meteorTimer;
-let difficultyTimer;
-
-
-/* POSISI PEMAIN */
-function resetPlayer() {
-
-    playerX =
-        game.clientWidth / 2 - 25;
-
-    player.style.left =
-        playerX + "px";
-}
-
-
-/* MULAI GAME */
-function startGame() {
-
-    score = 0;
-    level = 1;
-    time = 30;
-
-    playing = true;
-
-    scoreText.textContent = score;
-    levelText.textContent = level;
-    timeText.textContent = time;
-
-    game.innerHTML = "";
-
-    game.appendChild(player);
-
-    resetPlayer();
-
-    message.textContent =
-        "🔥 Hindari semua meteor!";
-
-    clearInterval(gameTimer);
-    clearInterval(meteorTimer);
-    clearInterval(difficultyTimer);
-
-    /* TIMER */
-    gameTimer = setInterval(() => {
-
-        time--;
-
-        timeText.textContent = time;
-
-        if (time <= 0) {
-
-            endGame();
-
-        }
-
-    }, 1000);
-
-
-    /* METEOR */
-    meteorTimer = setInterval(() => {
-
-        createMeteor();
-
-    }, 700);
-
-
-    /* NAIK LEVEL */
-    difficultyTimer = setInterval(() => {
-
-        level++;
-
-        levelText.textContent = level;
-
-    }, 10000);
-}
-
-
-/* BUAT METEOR */
-function createMeteor() {
-
-    if (!playing) return;
-
-    const meteor =
-        document.createElement("div");
-
-    meteor.className = "meteor";
-
-    let x =
-        Math.random() *
-        (game.clientWidth - 45);
-
-    let y = -50;
-
-    meteor.style.left =
-        x + "px";
-
-    meteor.style.top =
-        y + "px";
-
-    game.appendChild(meteor);
-
-
-    let speed =
-        2.5 + level * .6;
-
-
-    function move() {
-
-        if (!playing) {
-            meteor.remove();
-            return;
-        }
-
-        y += speed;
-
-        meteor.style.top =
-            y + "px";
-
-
-        /* TABRAKAN */
-        if (collision(player, meteor)) {
-
-            endGame();
-
-            return;
-        }
-
-
-        /* METEOR LEWAT */
-        if (y > game.clientHeight) {
-
-            score++;
-
-            scoreText.textContent =
-                score;
-
-            meteor.remove();
-
-            return;
-        }
-
-
-        requestAnimationFrame(move);
-    }
-
-    move();
-}
-
-
-/* CEK TABRAKAN */
-function collision(a, b) {
-
-    const A =
-        a.getBoundingClientRect();
-
-    const B =
-        b.getBoundingClientRect();
-
-    return !(
-        A.bottom < B.top ||
-        A.top > B.bottom ||
-        A.right < B.left ||
-        A.left > B.right
-    );
-}
-
-
-/* GERAK KIRI */
-function moveLeft() {
-
-    if (!playing) return;
-
-    playerX -= 35;
-
-    if (playerX < 0) {
-        playerX = 0;
-    }
-
-    player.style.left =
-        playerX + "px";
-}
-
-
-/* GERAK KANAN */
-function moveRight() {
-
-    if (!playing) return;
-
-    playerX += 35;
-
-    if (
-        playerX >
-        game.clientWidth - 50
-    ) {
-        playerX =
-            game.clientWidth - 50;
-    }
-
-    player.style.left =
-        playerX + "px";
-}
-
-
-/* KEYBOARD */
-document.addEventListener("keydown", function(e) {
-
-    if (e.key === "ArrowLeft" || e.key === "a") {
-        moveLeft();
-    }
-
-    if (e.key === "ArrowRight" || e.key === "d") {
-        moveRight();
-    }
-
-});
-
-
-/* TOMBOL HP */
-document.getElementById("left")
-    .addEventListener("click", moveLeft);
-
-document.getElementById("right")
-    .addEventListener("click", moveRight);
-
-
-/* GAME OVER */
-function endGame() {
-
-    playing = false;
-
-    clearInterval(gameTimer);
-    clearInterval(meteorTimer);
-    clearInterval(difficultyTimer);
-
-    message.innerHTML =
-        "💥 GAME OVER! Score kamu: <b>" +
-        score +
-        "</b>";
-
-}
-
-
-/* BINTANG */
-function createStars() {
-
-    for (let i = 0; i < 20; i++) {
-
-        const star =
-            document.createElement("div");
-
-        star.className = "star";
-
-        star.textContent = "✦";
-
-        star.style.left =
-            Math.random() *
-            game.clientWidth + "px";
-
-        star.style.top =
-            Math.random() *
-            game.clientHeight + "px";
-
-        game.appendChild(star);
-    }
-
-}
-
-createStars();
-
-</script>
 
 </body>
 </html>
