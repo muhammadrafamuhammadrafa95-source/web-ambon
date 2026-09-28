@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RAPZZ GUSTAVO | Michael Olise</title>
+    <title>RAPZZ GUSTAVO | OLISE</title>
 
     <style>
         * {
@@ -15,205 +15,217 @@
 
         body {
             min-height: 100vh;
-            background: linear-gradient(135deg, #090014, #24004d, #6a00ff);
+            background:
+                radial-gradient(circle at 80% 20%, #8a2be2 0%, transparent 30%),
+                radial-gradient(circle at 10% 80%, #4b0082 0%, transparent 35%),
+                #07000f;
             color: white;
             overflow-x: hidden;
         }
 
-        /* Efek lingkaran */
-        .circle {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            z-index: -1;
-        }
-
-        .circle1 {
-            width: 300px;
-            height: 300px;
-            background: #9b00ff;
-            top: -100px;
-            left: -100px;
-        }
-
-        .circle2 {
-            width: 350px;
-            height: 350px;
-            background: #4b00ff;
-            right: -120px;
-            bottom: -100px;
-        }
-
-        header {
+        /* NAVBAR */
+        nav {
+            height: 80px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 25px 8%;
-            background: rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(10px);
+            justify-content: space-between;
+            padding: 0 8%;
+            background: rgba(10, 0, 20, 0.65);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(190, 100, 255, .25);
         }
 
         .logo {
-            font-size: 25px;
-            font-weight: bold;
-            color: #d9a3ff;
+            font-size: 24px;
+            font-weight: 900;
+            color: #d98cff;
+            text-shadow: 0 0 15px #a020f0;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin-left: 25px;
-            transition: 0.3s;
+            margin-left: 30px;
+            font-weight: bold;
         }
 
         nav a:hover {
-            color: #d98aff;
+            color: #d98cff;
         }
 
+        /* HERO */
         .hero {
-            min-height: 85vh;
+            min-height: calc(100vh - 80px);
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 50px 8%;
+            justify-content: space-between;
+            padding: 60px 9%;
+            gap: 50px;
         }
 
-        .content {
+        .text {
             max-width: 600px;
+            z-index: 2;
         }
 
-        .small {
-            color: #d89cff;
-            font-size: 18px;
-            letter-spacing: 4px;
+        .tag {
+            color: #c77dff;
+            letter-spacing: 6px;
+            font-size: 15px;
+            font-weight: bold;
             margin-bottom: 15px;
         }
 
         h1 {
-            font-size: 70px;
-            line-height: 1;
+            font-size: clamp(55px, 8vw, 100px);
+            line-height: .9;
             text-transform: uppercase;
-            text-shadow: 0 0 25px #a000ff;
+            font-weight: 1000;
+            text-shadow: 0 0 30px rgba(174, 0, 255, .5);
         }
 
         h1 span {
             color: #c77dff;
         }
 
-        .name {
-            margin-top: 20px;
+        .rapzz {
+            margin-top: 25px;
             font-size: 28px;
+            letter-spacing: 8px;
             font-weight: bold;
-            letter-spacing: 5px;
         }
 
         .desc {
             margin-top: 20px;
+            color: #cfc3d8;
             line-height: 1.7;
-            color: #ddd;
+            max-width: 520px;
         }
 
-        .button {
+        .btn {
             display: inline-block;
             margin-top: 30px;
-            padding: 14px 30px;
-            border-radius: 30px;
-            background: linear-gradient(90deg, #7b00ff, #c000ff);
+            padding: 15px 35px;
+            border-radius: 40px;
+            background: linear-gradient(90deg, #7200ff, #c000ff);
             color: white;
             text-decoration: none;
             font-weight: bold;
-            box-shadow: 0 0 25px #8a00ff;
-            transition: 0.3s;
+            box-shadow: 0 0 30px rgba(174, 0, 255, .7);
+            transition: .3s;
         }
 
-        .button:hover {
-            transform: scale(1.08);
-            box-shadow: 0 0 40px #c000ff;
+        .btn:hover {
+            transform: translateY(-5px) scale(1.04);
+            box-shadow: 0 0 50px #a020f0;
         }
 
-        .player-card {
-            margin-left: 70px;
-            width: 330px;
-            height: 430px;
-            border-radius: 25px;
-            background: linear-gradient(145deg, #26004f, #090014);
-            border: 2px solid #a100ff;
-            box-shadow: 0 0 50px rgba(150, 0, 255, 0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* FOTO */
+        .photo-box {
+            width: 430px;
+            height: 560px;
             position: relative;
-            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
         }
 
-        .player-card::before {
-            content: "OLISE";
+        .photo-box::before {
+            content: "";
             position: absolute;
-            font-size: 100px;
-            font-weight: bold;
-            color: rgba(255,255,255,0.04);
-            transform: rotate(-20deg);
+            width: 380px;
+            height: 380px;
+            background: #8a2be2;
+            filter: blur(100px);
+            opacity: .55;
+            border-radius: 50%;
         }
 
-        .player-number {
-            font-size: 150px;
-            font-weight: bold;
-            color: #b86cff;
-            text-shadow: 0 0 30px #9c00ff;
+        .photo {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter:
+                drop-shadow(0 0 15px #a020f0)
+                drop-shadow(0 0 35px rgba(160, 32, 240, .7));
+            transition: .5s;
         }
 
-        .stats {
+        .photo:hover {
+            transform: scale(1.04) translateY(-8px);
+            filter:
+                drop-shadow(0 0 25px #d000ff)
+                drop-shadow(0 0 55px #8a2be2);
+        }
+
+        /* BACK TEXT */
+        .back-text {
+            position: absolute;
+            right: -40px;
+            bottom: 20px;
+            font-size: 130px;
+            font-weight: 1000;
+            color: rgba(255,255,255,.035);
+            z-index: 1;
+            transform: rotate(-8deg);
+        }
+
+        /* INFO */
+        .info {
+            padding: 50px 8%;
             display: flex;
             justify-content: center;
             gap: 20px;
-            padding: 40px 8%;
             flex-wrap: wrap;
         }
 
-        .box {
-            width: 180px;
+        .card {
+            width: 200px;
             padding: 25px;
             text-align: center;
-            border-radius: 15px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(200,100,255,.25);
+            border-radius: 18px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 0 20px rgba(120,0,255,.15);
         }
 
-        .box h2 {
-            color: #d28aff;
-            font-size: 30px;
+        .card h2 {
+            color: #d18aff;
+            font-size: 32px;
         }
 
-        .box p {
-            color: #ccc;
+        .card p {
             margin-top: 8px;
+            color: #aaa;
         }
 
         footer {
             text-align: center;
             padding: 30px;
-            color: #aaa;
-            background: rgba(0,0,0,0.25);
+            color: #888;
         }
 
-        @media(max-width: 800px) {
+        @media(max-width: 850px) {
             .hero {
                 flex-direction: column;
                 text-align: center;
             }
 
-            .player-card {
-                margin: 50px 0 0;
+            .photo-box {
+                width: 330px;
+                height: 450px;
             }
 
-            h1 {
-                font-size: 50px;
-            }
-
-            nav {
+            nav a {
                 display: none;
+            }
+
+            .desc {
+                margin-left: auto;
+                margin-right: auto;
             }
         }
     </style>
@@ -221,76 +233,90 @@
 
 <body>
 
-    <div class="circle circle1"></div>
-    <div class="circle circle2"></div>
-
-    <header>
+    <nav>
         <div class="logo">RG ⚡</div>
 
-        <nav>
-            <a href="#">Home</a>
-            <a href="#about">About</a>
-            <a href="#stats">Stats</a>
-        </nav>
-    </header>
+        <div>
+            <a href="#">HOME</a>
+            <a href="#profile">PROFILE</a>
+            <a href="#stats">STATS</a>
+        </div>
+    </nav>
 
-    <section class="hero" id="about">
 
-        <div class="content">
-            <div class="small">FOOTBALL PLAYER</div>
+    <section class="hero" id="profile">
+
+        <div class="text">
+
+            <div class="tag">THE MAGICIAN • 17</div>
 
             <h1>
                 MICHAEL<br>
                 <span>OLISE</span>
             </h1>
 
-            <div class="name">
+            <div class="rapzz">
                 RAPZZ GUSTAVO
             </div>
 
             <p class="desc">
-                Welcome to the purple football zone.
-                Michael Olise dikenal dengan kemampuan dribbling,
-                passing, kreativitas dan kaki kirinya yang berbahaya.
+                Welcome to the purple zone.
+                A fan page dedicated to Michael Olise,
+                winger dengan gaya bermain kreatif,
+                dribbling dan kaki kiri yang khas.
             </p>
 
-            <a href="#stats" class="button">
-                VIEW PROFILE ⚡
+            <a href="#stats" class="btn">
+                EXPLORE ⚡
             </a>
+
         </div>
 
-        <div class="player-card">
-            <div class="player-number">10</div>
+
+        <div class="photo-box">
+
+            <div class="back-text">
+                17
+            </div>
+
+            <img
+                class="photo"
+                src="https://img.fcbayern.com/image/upload/f_auto/q_auto/t_cms-16x9-seo/v1723375678/cms/public/images/fcbayern-com/homepage/Saison-24-25/Galerien/Olise/05-michael-olise-070724.jpg"
+                alt="Michael Olise"
+            >
+
         </div>
 
     </section>
 
-    <section class="stats" id="stats">
 
-        <div class="box">
+    <section class="info" id="stats">
+
+        <div class="card">
+            <h2>17</h2>
+            <p>Jersey Number</p>
+        </div>
+
+        <div class="card">
+            <h2>LW</h2>
+            <p>Position</p>
+        </div>
+
+        <div class="card">
             <h2>⚡</h2>
             <p>Speed</p>
         </div>
 
-        <div class="box">
-            <h2>95</h2>
-            <p>Dribbling</p>
-        </div>
-
-        <div class="box">
-            <h2>94</h2>
-            <p>Passing</p>
-        </div>
-
-        <div class="box">
-            <h2>90</h2>
-            <p>Creativity</p>
+        <div class="card">
+            <h2>LEFT</h2>
+            <p>Strong Foot</p>
         </div>
 
     </section>
 
+
     <footer>
-        © 2026 RAPZZ GUSTAVO — MICHAEL OLISE FAN PAGE
+        © 2026 RAPZZ GUSTAVO • OLISE FAN PAGE
     </footer>
 
 </body>
